@@ -1,0 +1,68 @@
+<%- include('./partials/head')%>
+
+<body class="bg-gray-900 text-white">
+
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1 class="title">Lost in Travel?</h1>
+        <p class="message">It seems the page you are looking for has ventured off the map. Let's get you back home.</p>
+        <a href="/" class="home-button">Go Back Home</a>
+    </div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .error-code {
+            font-size: 10rem;
+            font-weight: 800;
+            color: #FF385C;
+            text-shadow: 0 0 15px rgba(255, 56, 92, 0.4);
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-top: -2rem; /* Pulls the title up slightly over the number */
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            max-width: 450px;
+            margin-bottom: 2rem;
+        }
+
+        .home-button {
+            padding: 12px 30px;
+            background-color: #FF385C;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 56, 92, 0.3);
+        }
+        
+        .home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 56, 92, 0.5);
+        }
+    </style>
+
+</body>
+</html>

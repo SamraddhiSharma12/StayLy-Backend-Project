@@ -1,0 +1,46 @@
+<%- include('../partials/head')%>
+<head>
+    <link href="/css/login-style.css" rel="stylesheet">
+</head>
+
+<body>    
+    <div class="login-container">
+        <div class="image-grid-container">
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1582582494705-150b09315694?q=80&w=1080" alt="Interior design"></div>
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=1080" alt="Interior design"></div>
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1080" alt="Interior design"></div>
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=1080" alt="Interior design"></div>
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1080" alt="Interior design"></div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-wrapper">
+                <div class="logo">StayLY</div>
+                <h1>Welcome Back</h1>
+                <p>Find your next adventure. First, Log in.</p>
+
+                <%- include('../partials/errorBox')%>
+
+                <form action="/login" method="POST">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" placeholder="e.g. you@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn-signin">Log In</button>
+                </form>
+
+                <p class="signup-link">
+                    Don't have an account? <a href="/signup">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/login-grid.js"></script>
+
+</body>
+</html>

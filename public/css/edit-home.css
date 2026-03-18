@@ -1,0 +1,221 @@
+
+/* --- Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* --- Global Body Styles ---
+   (Safely separated from the layout)
+*/
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #111827);
+  color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* --- Main Form Wrapper ---
+   (This centers the form on the page, below the navbar)
+*/
+.add-home-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 3rem;
+  width: 100%;
+}
+
+/* --- Scoped CSS Reset ---
+   This * { ... } reset now ONLY applies to elements
+   INSIDE your .add-home-main wrapper.
+   It can no longer break your navbar.
+*/
+.add-home-main * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Main Form Container --- */
+.add-home-main .form-container {
+  width: 100%;
+  max-width: 500px; 
+  height: auto;
+  max-height: none;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  padding: 2.2rem;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.add-home-main .form-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* --- Header inside the form --- */
+.add-home-main .form-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.add-home-main .form-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #FF385C;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.4px;
+}
+
+.add-home-main .form-header p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* --- Form Layout --- */
+.add-home-main form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; 
+}
+
+/* --- 2-Column Grid Row --- */
+.add-home-main .form-row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+/* --- Form Fields --- */
+.add-home-main .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.add-home-main label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: #e5e7eb;
+  padding-left: 0.2rem;
+}
+
+.add-home-main input,
+.add-home-main textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-home-main input::placeholder,
+.add-home-main textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.add-home-main input:focus,
+.add-home-main textarea:focus {
+  outline: none;
+  border-color: #FF385C;
+  box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.3);
+}
+
+/* --- Textarea --- */
+.add-home-main textarea {
+  resize: none;
+  min-height: 80px;
+  max-height: 120px;
+  line-height: 1.4;
+}
+
+/* --- File Input --- */
+.add-home-main input[type="file"] {
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+}
+.add-home-main input[type="file"]::file-selector-button {
+  background: #FF385C;
+  border: none;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+.add-home-main input[type="file"]::file-selector-button:hover {
+  background: #e01c44;
+}
+
+/* --- Submit Button --- */
+.add-home-main .form-submit {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.add-home-main .form-submit input[type="submit"] {
+  width: 60%;
+  padding: 0.8rem;
+  background: #FF385C;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-home-main .form-submit input[type="submit"]:hover {
+  background: #e01c44;
+  transform: translateY(-2px);
+}
+
+/* --- Fade-in Animation --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .add-home-main .form-container {
+    max-width: 90%;
+    padding: 1.8rem 1.2rem;
+    margin-top: 1.8rem;
+  }
+
+  .add-home-main .form-row-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .add-home-main .form-header h1 {
+    font-size: 1.5rem;
+  }
+}
+

@@ -1,0 +1,78 @@
+<%- include('../partials/head')%>
+<head>
+    <link href="/css/login-style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="image-grid-container">
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1582582494705-150b09315694?q=80&w=1080" alt="Interior design"></div>
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=1080" alt="Interior design"></div>
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1080" alt="Interior design"></div>
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=1080" alt="Interior design"></div>
+            <div class="grid-item"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1080" alt="Interior design"></div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-wrapper">
+                <div class="logo">StayLY</div>
+                <h1>Create Your Account</h1>
+                <p>Start your journey with us today.</p>
+
+                <%- include('../partials/errorBox')%>
+
+                <form action="/signup" method="POST">
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your Name" 
+                        value="<%= typeof oldInput != 'undefined' ? oldInput.name : '' %>"
+                        required>
+                    </div>
+                    
+                     <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="e.g., you@example.com" 
+                        value="<%= typeof oldInput != 'undefined' ? oldInput.email : '' %>"
+                        required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create a strong password" 
+                        
+                        required>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmpassword">Confirm Password</label>
+                        <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Re Enter password" required>
+                    </div>
+                    <div class="input-group">
+                      <label class="user-type-title">I am a...</label>
+                         <div class="radio-group">
+                         <div class="radio-option">
+                               <input type="radio" id="guest" name="userType" value="guest"
+                            <% if (typeof oldInput != 'undefined' && oldInput.userType === 'guest') { %>checked<% } %> 
+                               required>
+                      <label for="guest">Guest</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="host" name="userType" value="host"
+                        <% if (typeof oldInput != 'undefined' && oldInput.userType === 'host') { %>checked<% } %>
+                        >
+                        <label for="host">Host</label>
+                    </div>
+                </div>
+             </div>
+                      
+                    <button type="submit" class="btn-signin">Sign Up</button>
+                </form>
+
+                <p class="signup-link">
+                    Already have an account? <a href="/login">Log in</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/login-grid.js"></script>
+
+</body>
+</html>

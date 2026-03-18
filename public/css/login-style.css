@@ -1,0 +1,265 @@
+/* --- General Setup & Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background-color: #111827;    
+}
+
+/* --- Main Container (Split Screen) --- */
+.login-container {
+    display: flex;
+    flex:1;
+    width: 100%;
+    height: 100vh;
+}
+
+/* --- 1. Image Grid Column (Left Side) --- */
+.image-grid-container {
+    flex: 6;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.grid-item {
+    overflow: hidden;
+    position: relative;
+}
+
+.grid-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.grid-item:nth-child(4) {
+    grid-column: span 2;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+    transform: scale(1.05);
+}
+
+/* --- 2. Form Column (Right Side) --- */
+.form-section {
+    flex: 4; /* Stays at 40% of the screen width */
+    display: flex;
+    
+    justify-content: center; 
+    align-items: center;
+    padding: 1rem;
+    background-color: #111827;
+    color: #fff;
+    min-height: 100vh; /* Ensure it always takes full height */
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 360px; 
+    padding-top: 10px;
+}
+.logo {
+    font-size: 2.1rem; 
+    font-weight: 700; 
+    color: #FF385C; 
+    text-align: center;
+}
+
+.form-wrapper h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.1rem;
+    text-align: center;
+}
+
+.form-wrapper p {
+    color: #9ca3af;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.input-group {
+    margin-bottom: 0.85rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #d1d5db;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background-color: #1f2937;
+    color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input::placeholder {
+    color: #6b7280;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #FF385C;
+    box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.3);
+}
+
+.btn-signin {
+    width: 100%;
+    padding: 0.75rem 0.7rem;
+    margin-top: 6px;
+    border: none;
+    border-radius: 8px;
+    background-color: #FF385C;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-signin:hover {
+    background-color: #e01c44;
+    transform: translateY(-2px);
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 0.65rem;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.signup-link a {
+    color: #FF385C;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive: On smaller screens, hide the grid and show only the form */
+@media (max-width: 768px) {
+    .image-grid-container {
+        display: none;
+    }
+    .form-section {
+        flex: 1;
+        padding: 1rem;
+    }
+    .form-wrapper {
+        max-height: none; /* No height limit on mobile */
+    }
+}
+
+/* Hide the default radio button */
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+.user-type-title {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #d1d5db;
+}
+
+/* Container for the two radio options */
+.radio-group {
+    display: flex;
+    gap: 0.75rem; /* Creates space between the buttons */
+}
+
+/* Individual option wrapper */
+.radio-option {
+    flex: 1; /* Makes both options take up equal space */
+}
+
+/* Style for the labels, making them look like buttons */
+.radio-option label {
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #374151; /* --gray-600 */
+    background-color: #1f2937; /* --gray-800 */
+    color: #fff;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the labels */
+.radio-option label:hover {
+    background-color: #374151; /* --gray-700 */
+}
+
+/* THE MAGIC: Style the label when its associated radio button is checked */
+.radio-option input[type="radio"]:checked + label {
+    border-color: #FF385C; 
+    background-color: rgba(255, 56, 92, 0.2); /* Red with 20% opacity */
+    box-shadow: 0 0 0 1px #FF385C; /* Adds a subtle outer glow */
+}
+/*
+/* --- Validation Error Styles (Updated for Scroll) ---
+*/
+
+.error-container {
+    width: 100%;
+    padding: 0.4rem 1rem; /* Adjusted padding */
+    margin-bottom: 1rem;
+    border: 1px solid #e53e3e;
+    background-color: rgba(229, 62, 62, 0.1);
+    border-radius: 8px;
+    
+    /* === THE KEY FIX === */
+    max-height: 101px; /* Limits the height to show ~3-4 errors */
+    overflow-y: auto;  /* Adds a scrollbar ONLY if more errors exist */
+}
+
+/* Custom scrollbar for the error box for a consistent look */
+.error-container::-webkit-scrollbar {
+  width: 5px;
+}
+.error-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.error-container::-webkit-scrollbar-thumb {
+  background-color: #6b7280; /* A subtle dark gray */
+  border-radius: 20px;
+}
+
+.error-message {
+    color: #f56565;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+    padding-right: 5px; /* Prevents text from sitting under the scrollbar */
+}
+
+.error-message:not(:last-child) {
+    margin-bottom: 0.5rem;
+}

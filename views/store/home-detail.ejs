@@ -1,0 +1,82 @@
+<head>
+    <%- include('../partials/head') %>
+    <link href="/css/home-detail.css" rel="stylesheet">
+    <!-- Font Awesome for icons, as seen in your reference -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="home-detail-body">
+    <%- include('../partials/heading') %>
+
+    <main class="detail-container">
+
+        <!-- ===== LEFT COLUMN (Main Content) ===== -->
+        <div class="detail-main-col">
+            <a href="/home-list" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to all homes
+            </a>
+
+            <h1 class="home-name"><%= home.houseName %></h1>
+            <p class="home-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <%= home.location %>
+            </p>
+
+            <!-- Image Gallery (Inspired by your reference) -->
+            <div class="image-gallery">
+                <div class="gallery-main">
+                    <img src="<%= home.photo %>" alt="<%= home.houseName %>" class="gallery-image">
+                </div>
+                <div class="gallery-thumb">
+                    <!-- In a real app, these would be different images -->
+                    <img src="<%= home.photo %>" alt="Thumbnail 1" class="gallery-image">
+                </div>
+                <div class="gallery-thumb">
+                    <img src="<%= home.photo %>" alt="Thumbnail 2" class="gallery-image">
+                </div>
+            </div>
+
+            <!-- Description (Inspired by your reference) -->
+            <div class="detail-description">
+                <h3>About this home</h3>
+                <p>
+                    <%= home.description || "No description provided. This is a beautiful property located in the heart of " + home.location + ", perfect for your next getaway. Enjoy the local sights and relax in comfort." %>
+                </p>
+            </div>
+
+            <!-- You can add the "Facilities" grid here later -->
+
+        </div>
+
+        <!-- ===== RIGHT COLUMN (Sidebar Card) ===== -->
+        <div class="detail-sidebar-col">
+            <!-- This is the "glassmorphic" booking card -->
+            <div class="booking-card">
+                
+                <!-- Price & Rating -->
+                <div class="booking-header">
+                    <span class="home-price">Rs <%= home.price %> <span>/ night</span></span>
+                    <div class="home-rating">
+                        <i class="fas fa-star star-icon"></i>
+                        <span><%= home.rating %></span>
+                    </div>
+                </div>
+
+                <!-- Host Info Card (Inspired by your reference) -->
+                <div class="host-info">
+                    <img src="https://placehold.co/50x50/374151/e5e7eb?text=<%= home.hostName ? home.hostName.charAt(0) : 'H' %>" alt="Host" class="host-avatar">
+                    <div class="host-details">
+                        <span class="host-title">Your Host</span>
+                        <span class="host-name"><%= home.hostName || "Host" %></span>
+                    </div>
+                </div>
+                
+                <!-- Favourites Button (Main Call-to-Action) -->
+                <div class="home-favourites">
+                    <%- include('../partials/favourites') %>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

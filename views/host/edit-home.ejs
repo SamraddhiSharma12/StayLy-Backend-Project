@@ -1,0 +1,132 @@
+<%- include('../partials/head') %>
+<head>
+    <!-- This is the stylesheet this file uses -->
+    <link href="/css/edit-home.css" rel="stylesheet">
+</head>
+<body>
+  
+  <%- include('../partials/heading') %>
+  <%- include('../partials/errorBox',{errors:errors})%>
+
+  <main class="add-home-main">
+
+    <div class="form-container">
+      <header class="form-header">
+        <h1>
+          <%= editingvar ? "Edit" : "Register" %> Your Home
+        </h1>
+        <p>List your beautiful home on StayLY today</p>
+      </header>
+
+       <form
+        action="/host/<%= editingvar ? "edit-home" : "add-home" %>"
+        method="POST"
+        enctype="multipart/form-data">
+        <!-- hidden id -->
+        <input type="hidden" name="id" value="<%= editingvar ? home._id : '' %>" />
+
+        <!-- ROW 1: House Name & Rating -->
+        <div class="form-row-grid">
+          <div class="form-field">
+            <label for="houseName">House Name</label>
+            <!-- 
+              CORRECTED: Now repopulates from oldInput, just like signup.ejs
+            -->
+            <input
+              type="text"
+              name="houseName"
+              id="houseName"
+              placeholder="e.g. Cozy Lakeview Cabin"
+              required
+              value="<%= (typeof oldInput != 'undefined') ? oldInput.houseName : '' %>"
+            />
+          </div>
+          <div class="form-field">
+            <label for="rating">Rating (1-5)</label>
+            <input
+              type="number"
+              name="rating"
+              id="rating"
+              placeholder="e.g. 4.8"
+              step="0.1"
+              min="1"
+              max="5"
+              required
+              value="<%= (typeof oldInput != 'undefined') ? oldInput.rating : '' %>"
+            />
+          </div>
+        </div>
+
+        <!-- ROW 2: Price & Location -->
+        <div class="form-row-grid">
+          <div class="form-field">
+            <label for="price">Price per Night</label>
+            <input
+              type="number"
+              name="price"
+              id="price"
+              placeholder="e.g. 2000"
+              required
+              value="<%= (typeof oldInput != 'undefined') ? oldInput.price : '' %>"
+            />
+          </div>
+          <div class="form-field">
+            <label for="location">Location</label>
+            <input
+              type="text"
+              name="location"
+              id="location"
+              placeholder="e.g. Jaipur"
+              required
+              value="<%= (typeof oldInput != 'undefined') ? oldInput.location : '' %>"
+            />
+          </div>
+        </div>
+
+        <!-- ROW 3: Photo (Full Width) -->
+        <div class="form-field">
+          <label for="photo">Photo</label>
+          <% if (editingvar && home.photo) { %>
+      <p>Current: <%= home.photo.replace('uploads/images/', '') %></p>
+    <% } %>
+          <input
+            type="file"
+            name="photo"
+            id="photo"
+            accept="image/*"
+            <%= !editingvar ? "required" : "" %>
+          />
+        </div>
+
+        <!-- ROW 4: Description (Full Width) -->
+        <div class="form-field">
+          <label for="description">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            placeholder="Describe your home here..."
+          ><%= (typeof oldInput != 'undefined') ? oldInput.description : '' %></textarea>
+        </div>
+        <div class="form-field">
+          <label for="home-rules">Home Rules</label>
+          <input
+            type="file"
+            name="home-rules"
+            id="home-rules"
+            accept=".pdf"
+            <%= !editingvar ? "required" : "" %>
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-submit">
+          <input
+            type="submit"
+            value="<%= editingvar ? 'Update Home' : 'Add Home' %>"
+          />
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<%- include('../partials/head') %>
+
+<head>
+  <link rel="stylesheet" href="/css/home-list.css">
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <header>
+    <%- include('../partials/heading') %>
+  </header>
+
+  <main class="page-container">
+
+    <!-- Welcome Section -->
+    <section class="welcome-header">
+      <h1>Find Your Next Stay</h1>
+      <p>Discover beautiful homes and unforgettable experiences across the world with StayLY</p>
+    </section>
+
+    <!-- Homes Grid Section -->
+    <section class="homes-grid-section">
+      
+      <!-- Subheading -->
+      <h2>Stays Available For You</h2>
+
+      <!-- Card Container - Now styled by CSS Grid -->
+      <div class="homes-grid-container">
+        
+        <% if (registeredHomes.length === 0) { %>
+          <!-- No Homes Message -->
+          <div class="card no-homes-card">
+            <h3>No Homes Available</h3>
+            <p>Please check back later, or try a different search.</p>
+          </div>
+        <% } else { %>
+          <% registeredHomes.forEach(home => { %>
+            <!-- Glassmorphic Home Card -->
+            <div class="card">
+              <img src="<%= home.photo %>" alt="<%= home.houseName %>" class="card-image">
+
+              <div class="card-body">
+                <h3 class="card-title"><%= home.houseName %></h3>
+                <p class="card-location"><%= home.location %></p>
+
+                <!-- Price & Rating -->
+                <div class="card-info-flex">
+                  <span class="card-price">Rs<%= home.price %> / night</span>
+                  <div class="card-rating">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="star-icon">
+                      <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                    </svg>
+                    <span><%= home.rating %></span>
+                  </div>
+                </div>
+
+                <!-- Guest Actions: Details & Favourite -->
+                <div class="card-actions-flex">
+                  <a href="/homes/<%= home._id %>" class="btn btn-details">Details</a>
+                  
+                  <!-- Favourite Button Partial -->
+                  <div class="favourite-button-wrapper">
+                    <%- include('../partials/favourites', {home:home}) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        <% } %>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
