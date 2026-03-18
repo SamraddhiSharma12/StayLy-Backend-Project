@@ -1,18 +1,19 @@
 {
   "name": "airbnb2",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "tailwindcss -i ./views/input.css -o ./public/output.css --watch",
-    "start": "nodemon app.js & npm run tailwind"
+    
+    "start": "node app.js"
+   
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.11",
+    
     "bcryptjs": "^3.0.2",
     "connect-mongodb-session": "^5.0.0",
     "ejs": "^3.1.10",
@@ -23,10 +24,5 @@
     "mongoose": "^8.18.1",
     "multer": "^2.0.2",
     "mysql2": "^3.14.3"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "nodemon": "^3.1.10",
-    "tailwindcss": "^4.1.11"
   }
 }
